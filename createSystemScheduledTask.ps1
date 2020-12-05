@@ -1,4 +1,4 @@
-$scriptToExecutePath = "C:\\script-name-here.ps1";
+$scriptToExecutePath = "C:\Path\To\dump-script.ps1";
 $taskName = "MongoDB Backup"
 $taskDescription = "Make a dump of a MongoDB database"
 
