@@ -36,7 +36,7 @@ __4.__ After all the process of installation/verification we will create the flo
   $scriptToExecutePath = "C:\Path\To\dumpMongoDatabase.ps1"
   $trigger = New-ScheduledTaskTrigger -Daily -At 1am
   ```
-  > __OBS:__ Change the <databaseName> too, for more control of wich database that task will backup
+  > __OBS:__ Change the 'databaseName' in the name and description too, for more control of wich database that task will backup
   
   __4.3.__ Finally, open the PowerShell as admin (for precaution) and enter in the folder that the ___createSystemScheduledTask.ps1___ is
   ```powershell
