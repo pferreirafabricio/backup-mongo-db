@@ -1,6 +1,6 @@
 $scriptToExecutePath = "C:\Path\To\dump-script.ps1";
-$taskName = "MongoDB Backup"
-$taskDescription = "Make a dump of a MongoDB database"
+$taskName = "MongoDB Backup - <databaseName>"
+$taskDescription = "Make a dump of <databaseName> database"
 
 $action = New-ScheduledTaskAction `
   -Execute 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe' `
@@ -16,3 +16,6 @@ Register-ScheduledTask `
   -Trigger $trigger `
   -Settings $taskSettings `
   -Description $taskDescription
+  
+# OBS: If you need to run the task manually for testing use:
+# Start-ScheduledTask -TaskName 'MongoDB Backup - <databaseName>'
