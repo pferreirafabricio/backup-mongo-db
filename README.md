@@ -5,21 +5,35 @@ It's a simple script made with PowerShell to make a dump of a MongoDB database a
 ## :arrows_clockwise: Creating a simple backup flow
 
 __1.__ Verify the version of MongoDB, running:
-```
-$ mongod --version
+```powershell
+mongod --version
 ```
 
-__2.__ If the version of your MongoDB is 4.4 or above your will need install de _mongodump, mongorestore_ and other tools separately. For this follow this guide: [Installing the Database Tools](https://docs.mongodb.com/database-tools/installation/installation/)
+__2.__ If the version of your MongoDB is 4.4 or above your will need install de _mongodump, mongorestore_ and other tools separately. For this follow this guide: [Installing the Database Tools on Windows](https://docs.mongodb.com/database-tools/installation/installation-windows/)
 > "Starting with MongoDB 4.4, the MongoDB Database Tools are now released separately from the MongoDB Server..."
 
 __3.__ After the installation or if your version already has the database tools (like the version 4.2), run the following commands to guarantee that the tools are accessable by the command line:
-```shell
-$ mongodump --help
+```powershell
+mongodump --help
 ```
+```powershell
+mongorestore --help
 ```
-$ mongorestore --help
-```
-__4.__
+
+__4.__ After all the process of installation/verification we will create the flow properly
+
+  __4.1__ Edit the [dumpMongoDatabase.ps1](https://github.com/pferreirafabricio/powerShell-dumpMongoDB/blob/main/dumpMongoDatabase.ps1) script, modifing the variables:
+  ```powershell
+  $databaseName = "databaseName"
+  $mongoDbHost = "localhost:27017"
+  $backupPath = "C:\Path\To\Back\Folder"
+  ```
+  > __OBS:__ If the database requires authorization remember to use the command with __-u__ and __-p__ flags
+  
+  __4.2.__ Edit the [createSystemScheduledTask.ps1](https://github.com/pferreirafabricio/powerShell-dumpMongoDB/blob/main/createSystemScheduledTask.ps1) script replacing the variable with the path of the _dumpMongoDatabase.ps1_ script
+   ```powershell
+  $scriptToExecutePath = "C:\Path\To\dump-script.ps1";
+  ```
 
 ## :page_with_curl: References
 
