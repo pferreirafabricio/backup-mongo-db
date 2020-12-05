@@ -1,6 +1,6 @@
 # :ballot_box: Dump MongoDB Database
 
-It's a simple script made with PowerShell to make a dump of a MongoDB database and save all collections in a .zip folder.
+It's a simple script made with PowerShell to make a backup of a MongoDB database and save all collections in a .zip folder.
 
 ## :arrows_clockwise: Creating a simple backup flow
 
@@ -22,7 +22,7 @@ mongorestore --help
 
 __4.__ After all the process of installation/verification we will create the flow properly
 
-  __4.1__ Edit the [dumpMongoDatabase.ps1](https://github.com/pferreirafabricio/powerShell-dumpMongoDB/blob/main/dumpMongoDatabase.ps1) script, modifing the variables:
+  __4.1__ Edit the [backupMongoDatabase.ps1](https://github.com/pferreirafabricio/powerShell-dumpMongoDB/blob/main/backupMongoDatabase.ps1) script, modifing the variables:
   ```powershell
   $databaseName = "databaseName"
   $mongoDbHost = "localhost:27017"
@@ -48,11 +48,19 @@ __4.__ After all the process of installation/verification we will create the flo
   ```
   
   __4.5.__ The following output will be showed
+  <br/>
   <img src="./docs/task-created.png" />
   
 __5.__ :white_check_mark: Success! We created a basic backup task. You can check the task in _Task Scheduler_ too:
-<img src="./docs/search-task-scheduler.png" />
+<img width="480px" src="./docs/search-task-scheduler.png" />
+<br/><br/>
+The task:
 <img src="./docs/task-in-task-scheduler.png" />
+
+### :recycle: Need restore a database using the backup?
+
+Take a look at this discussion at _DBA Stack Exchange_: [How restore a specific database from backup using mongorestore command
+](https://dba.stackexchange.com/questions/113017/how-restore-a-specific-database-from-backup-using-mongorestore-command)
   
 ## :page_with_curl: References
 
