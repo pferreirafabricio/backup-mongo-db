@@ -4,6 +4,7 @@
 $databaseName = "databaseName"
 # $username = ""
 # $password = ""
+# $authenticationDatabase = ""
 $mongoDbHost = "localhost:27017"
 
 <# Set the folder's location and name #>
@@ -23,11 +24,17 @@ $watch.Start()
 Write-Host "Backing up the Database: '$databaseName' to local directory: $backupPath."
 
 # Use this command when the database require authorization
-# mongodump -h $mongoDbHost -d $databaseName -u $username -p $password -o "$directoryPath"
+<# mongodump -h "$mongoDbHost" `
+   -d "$databaseName" `
+   -u "$username" `
+   -p "$password" `
+   --authenticationDatabase "$authenticationDatabase" `
+   -o "$directoryPath"
+#>
 
 # ATTENTION ⚠: Use the absolute path if you haven't added mongo to your System Path
 # Ex: C:\mongodb\bin\mongodump.exe -h $mongoDbHost -d $databaseName -o "$directoryPath"
-mongodump -h $mongoDbHost -d $databaseName -o "$directoryPath"
+mongodump -h "$mongoDbHost" -d "$databaseName" -o "$directoryPath"
 
 Write-Host "Creating the backup for $databaseName..."
 
