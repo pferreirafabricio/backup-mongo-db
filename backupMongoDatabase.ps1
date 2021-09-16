@@ -6,6 +6,7 @@ $databaseName = "databaseName"
 # $password = ""
 # $authenticationDatabase = ""
 $mongoDbHost = "localhost:27017"
+# $uri = ""
 
 <# Set the folder's location and name #>
 $backupPath = "C:\Path\To\Back\Folder"
@@ -31,6 +32,9 @@ Write-Host "Backing up the Database: '$databaseName' to local directory: $backup
    --authenticationDatabase "$authenticationDatabase" `
    -o "$directoryPath"
 #>
+
+# Or use this command (Without specifying the -d flag the command will backup all databases in the host)
+# mongodump --uri "$uri" -o "$directoryPath"
 
 # ATTENTION ⚠: Use the absolute path if you haven't added mongo to your System Path
 # Ex: C:\mongodb\bin\mongodump.exe -h $mongoDbHost -d $databaseName -o "$directoryPath"
