@@ -40,7 +40,7 @@ __4.__ After all the process of installation/verification we will create the flo
   
   __4.3.__ Finally, open the PowerShell as admin (for precaution) and enter in the folder that the ___createSystemScheduledTask.ps1___ is
   ```powershell
-  cd "C:\Path\To\createSystemScheduledTask.ps1"
+  cd "C:\Path\To\WhereScriptIs"
   ```
   
   __4.4.__ And execute it
