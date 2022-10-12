@@ -38,19 +38,12 @@ Write-Host "Backing up the Database: '$databaseName' to local directory: $backup
 
 # ATTENTION ⚠: Use the absolute path if you haven't added mongo to your System Path
 # Ex: C:\mongodb\bin\mongodump.exe -h $mongoDbHost -d $databaseName -o "$directoryPath"
-mongodump -h "$mongoDbHost" -d "$databaseName" -o "$directoryPath"
+# Version 3.2 introduced gzip & archive
+mongodump --gzip -h "$mongoDbHost" -d "$databaseName" -o "$directoryPath"
 
 Write-Host "Creating the backup for $databaseName..."
 
 $watch.Stop();
 Write-Host "MongoDB backup completed in "$watch.Elapsed.ToString()
-
-# Zip sfolder
-Write-Host "Zipping the folder backup folder..."
-Compress-Archive -Path "$directoryPath" -DestinationPath $zippedFileDestinationPath
-
-# Delete the backup folter created
-Write-Host "Delete backup's folder"
-Remove-Item "$directoryPath" -Recurse
 
 #endregion
