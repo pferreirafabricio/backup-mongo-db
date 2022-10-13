@@ -14,9 +14,6 @@ $currentDate = get-date -format yyyyMMddHHmm
 $directoryName = "$databaseName-$currentDate"
 $directoryPath = Join-Path $backupPath $directoryName
 
-<# Zip #>
-$zippedFileDestinationPath = "$backupPath\$directoryName.zip";
-
 #endregion
 
 #region Backup Process
@@ -38,12 +35,35 @@ Write-Host "Backing up the Database: '$databaseName' to local directory: $backup
 
 # ATTENTION ⚠: Use the absolute path if you haven't added mongo to your System Path
 # Ex: C:\mongodb\bin\mongodump.exe -h $mongoDbHost -d $databaseName -o "$directoryPath"
-# Version 3.2 introduced gzip & archive
-mongodump --gzip -h "$mongoDbHost" -d "$databaseName" -o "$directoryPath"
+
+<# ZIP #>
+# zip backup method for mongodbtools version 3.1 or lower
+
+# $zippedFileDestinationPath = "$backupPath\$directoryName.zip";
+# mongodump -h "$mongoDbHost" -d "$databaseName" -o "$directoryPath"
+
+<# gzip #>
+# gzip & archive for mongodbtools version 3.2 or above
+
+$archiveFileDestinationPath = "$backupPath\$directoryName.gz";
+mongodump --gzip -h "$mongoDbHost" -d "$databaseName" --archive="$archiveFileDestinationPath"
+
 
 Write-Host "Creating the backup for $databaseName..."
 
 $watch.Stop();
 Write-Host "MongoDB backup completed in "$watch.Elapsed.ToString()
+
+# ATTENTION ⚠: UnComment Lines Below If You Wish To Use ZIP Method
+# Zip BackUp Folder (Powershell Built-in Command | Alternate Way)
+
+# Write-Host "Zipping the folder backup folder..."
+# Compress-Archive -Path "$directoryPath" -DestinationPath $zippedFileDestinationPath
+
+# Delete the uncompressed backup folter created 
+
+# Write-Host "Delete backup's folder"
+# Remove-Item "$directoryPath" -Recurse
+
 
 #endregion
