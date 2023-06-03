@@ -13,7 +13,7 @@ __2.__ If the version of your MongoDB is 4.4 or above, you will need install de 
 > **Note**:
 > "Starting with MongoDB 4.4, the MongoDB Database Tools are now released separately from the MongoDB Server..."
 
-__3.__ After the installation or if your version already has the database tools (like in the version 4.2), run the following commands to guarantee that the tools are accessable by the command line:
+__3.__ After the installation or if your version already has the database tools (like in the version 4.2), run the following commands to guarantee that the tools are accessible by the command line:
 ```powershell
 mongodump --help
 ```
@@ -21,11 +21,11 @@ mongodump --help
 mongorestore --help
 ```
 > **Note**:
-> If they are not accessable, follow this guide: [Make the DB Tools available in your PATH](https://docs.mongodb.com/database-tools/installation/installation-windows/#make-the-db-tools-available-in-your-path)
+> If they are not accessible, follow this guide: [Make the DB Tools available in your PATH](https://docs.mongodb.com/database-tools/installation/installation-windows/#make-the-db-tools-available-in-your-path)
 
 __4.__ After all the process of installation/verification we will create the flow properly
 
-  __4.1__ Edit the [backupMongoDatabase.ps1](https://github.com/pferreirafabricio/powerShell-dumpMongoDB/blob/main/backupMongoDatabase.ps1) script, modifing the variables:
+  __4.1__ Edit the [backupMongoDatabase.ps1](https://github.com/pferreirafabricio/powerShell-dumpMongoDB/blob/main/backupMongoDatabase.ps1) script, modifying the variables:
   ```powershell
   $databaseName = "databaseName"
   $mongoDbHost = "localhost:27017"
@@ -34,7 +34,7 @@ __4.__ After all the process of installation/verification we will create the flo
   > **Note**:
   > If the database requires authorization remember to use the command with __-u__ and __-p__ flags
   
-  __4.2.__ Edit the [createSystemScheduledTask.ps1](https://github.com/pferreirafabricio/powerShell-dumpMongoDB/blob/main/createSystemScheduledTask.ps1) script, modifing the  variable with the path of the ___dumpMongoDatabase.ps1___ script and the time that the task will run
+  __4.2.__ Edit the [createSystemScheduledTask.ps1](https://github.com/pferreirafabricio/powerShell-dumpMongoDB/blob/main/createSystemScheduledTask.ps1) script, modifying the  variable with the path of the ___dumpMongoDatabase.ps1___ script and the time that the task will run
    ```powershell
   $scriptToExecutePath = "C:\Path\To\dumpMongoDatabase.ps1"
   $trigger = New-ScheduledTaskTrigger -Daily -At 1am
