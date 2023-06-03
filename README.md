@@ -1,6 +1,6 @@
 # :ballot_box: Dump MongoDB Database
 
-It's a simple script made with PowerShell to create a backup of a MongoDB database and save all collections in a _.zip_ folder.
+It's a simple script made with PowerShell to create a backup of a MongoDB database and save all collections in a `.zip` folder or `.gz` file.
 
 ## :arrows_clockwise: Creating a simple backup flow
 
@@ -25,7 +25,7 @@ mongorestore --help
 
 __4.__ After all the process of installation/verification we will create the flow properly
 
-  __4.1__ Edit the [backupMongoDatabase.ps1](https://github.com/pferreirafabricio/powerShell-dumpMongoDB/blob/main/backupMongoDatabase.ps1) script, modifying the variables:
+  __4.1__ Edit the [backupMongoDatabase.ps1](./backupMongoDatabase.ps1) script, modifying the variables:
   ```powershell
   $databaseName = "databaseName"
   $mongoDbHost = "localhost:27017"
@@ -34,9 +34,9 @@ __4.__ After all the process of installation/verification we will create the flo
   > **Note**:
   > If the database requires authorization remember to use the command with __-u__ and __-p__ flags
   
-  __4.2.__ Edit the [createSystemScheduledTask.ps1](https://github.com/pferreirafabricio/powerShell-dumpMongoDB/blob/main/createSystemScheduledTask.ps1) script, modifying the  variable with the path of the ___dumpMongoDatabase.ps1___ script and the time that the task will run
+  __4.2.__ Edit the [createSystemScheduledTask.ps1](./createSystemScheduledTask.ps1) script, modifying the  variable with the path of the [backupMongoDatabase](./backupMongoDatabase.ps1) script and the time that the task will run
    ```powershell
-  $scriptToExecutePath = "C:\Path\To\dumpMongoDatabase.ps1"
+  $scriptToExecutePath = "C:\Path\To\backupMongoDatabase.ps1"
   $trigger = New-ScheduledTaskTrigger -Daily -At 1am
   ```
   > **Note**:
