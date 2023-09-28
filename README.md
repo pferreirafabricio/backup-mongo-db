@@ -9,18 +9,20 @@ __1.__ Verify the version of MongoDB, running:
 mongod --version
 ```
 
-__2.__ If the version of your MongoDB is 4.4 or above, you will need install de _mongodump, mongorestore_ and other tools separately. For this, follow this guide: [Installing the Database Tools on Windows](https://docs.mongodb.com/database-tools/installation/installation-windows/)
-> **Note**:
+__2.__ If the version of your MongoDB is 4.4 or above, you will need to install de _mongodump, mongorestore_, and other tools separately. For this, follow this guide: [Installing the Database Tools on Windows](https://docs.mongodb.com/database-tools/installation/installation-windows/)
+> **Note**
+> 
 > "Starting with MongoDB 4.4, the MongoDB Database Tools are now released separately from the MongoDB Server..."
 
-__3.__ After the installation or if your version already has the database tools (like in the version 4.2), run the following commands to guarantee that the tools are accessible by the command line:
+__3.__ After the installation or if your version already has the database tools (like in version 4.2), run the following commands to guarantee that the tools are accessible by the command line:
 ```powershell
 mongodump --help
 ```
 ```powershell
 mongorestore --help
 ```
-> **Note**:
+> **Note**
+> 
 > If they are not accessible, follow this guide: [Make the DB Tools available in your PATH](https://docs.mongodb.com/database-tools/installation/installation-windows/#make-the-db-tools-available-in-your-path)
 
 __4.__ After all the process of installation/verification we will create the flow properly
@@ -40,7 +42,7 @@ __4.__ After all the process of installation/verification we will create the flo
   $trigger = New-ScheduledTaskTrigger -Daily -At 1am
   ```
   > **Note**:
-  > Change the 'databaseName' in the name and description too, for more control of which database that task will backup
+  > Change the 'databaseName' in the name and description too, for more control of which database that task will back up
   
   __4.3.__ Finally, open the PowerShell as admin (for precaution) and enter in the folder that the ___createSystemScheduledTask.ps1___ is
   ```powershell
@@ -52,7 +54,7 @@ __4.__ After all the process of installation/verification we will create the flo
   ./createSystemScheduledTask.ps1
   ```
   
-  __4.5.__ The following output will be showed
+  __4.5.__ The following output will be shown
   <br/>
   <img src="./docs/task-created.png" />
   
@@ -67,7 +69,7 @@ __6.__ Test if the task is running correctly executing it manually:
 Start-ScheduledTask -TaskName 'MongoDB Backup - <databaseName>'
 ```
 
-### :recycle: Need restore a database using the backup?
+### :recycle: Need to restore a database using the backup?
 
 Take a look at this discussion at _DBA Stack Exchange_: [How restore a specific database from backup using mongorestore command
 ](https://dba.stackexchange.com/questions/113017/how-restore-a-specific-database-from-backup-using-mongorestore-command)
