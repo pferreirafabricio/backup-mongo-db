@@ -33,7 +33,8 @@ __4.__ After all the process of installation/verification we will create the flo
   $mongoDbHost = "localhost:27017"
   $backupPath = "C:\Path\To\Back\Folder"
   ```
-  > **Note**:
+  > **Note**
+  > 
   > If the database requires authorization remember to use the command with __-u__ and __-p__ flags
   
   __4.2.__ Edit the [createSystemScheduledTask.ps1](./createSystemScheduledTask.ps1) script, modifying the  variable with the path of the [backupMongoDatabase](./backupMongoDatabase.ps1) script and the time that the task will run
@@ -41,7 +42,8 @@ __4.__ After all the process of installation/verification we will create the flo
   $scriptToExecutePath = "C:\Path\To\backupMongoDatabase.ps1"
   $trigger = New-ScheduledTaskTrigger -Daily -At 1am
   ```
-  > **Note**:
+  > **Note**
+  >
   > Change the 'databaseName' in the name and description too, for more control of which database that task will back up
   
   __4.3.__ Finally, open the PowerShell as admin (for precaution) and enter in the folder that the ___createSystemScheduledTask.ps1___ is
