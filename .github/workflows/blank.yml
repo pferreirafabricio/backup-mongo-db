@@ -1,0 +1,20 @@
+name: Linting
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    name: Run PS Script Analyzer
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: lint
+      uses: devblackops/github-action-psscriptanalyzer@master
+      with:
+        failOnErrors: true
+        failOnWarnings: false
+        failOnInfos: false
